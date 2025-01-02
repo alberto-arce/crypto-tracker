@@ -4,6 +4,8 @@
 
 A cryptocurrency tracker application built with Next.js that allows users to track real-time prices and trends of top cryptocurrencies.
 
+**Live Demo:** [alb-crypto.netlify.app](https://alb-crypto.netlify.app/)
+
 ## Project Description
 
 This project is a cryptocurrency tracker that allows users to monitor various cryptocurrencies in real-time.
