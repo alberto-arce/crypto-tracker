@@ -1,0 +1,34 @@
+# Node modules
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Next.js build outputs
+.next
+
+# Dockerfile and Docker-related files (optional, but useful if you don't want to copy them to the container)
+Dockerfile
+.dockerignore
+
+# IDE/editor files
+.vscode
+.idea
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment files (optional, sensitive data might be stored here)
+.env
+.env.local
+.env.*.local
+
+# Temporary or backup files
+*.swp
+*.swo
