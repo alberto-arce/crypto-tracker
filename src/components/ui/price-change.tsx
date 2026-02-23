@@ -19,11 +19,7 @@ export function PriceChange({ value, className }: PriceChangeProps) {
         className,
       )}
     >
-      {isPositive ? (
-        <ArrowUpIcon className="h-4 w-4" />
-      ) : (
-        <ArrowDownIcon className="h-4 w-4" />
-      )}
+      {isPositive ? <ArrowUpIcon className="h-4 w-4" /> : <ArrowDownIcon className="h-4 w-4" />}
       <span>{Math.abs(value).toFixed(2)}%</span>
     </div>
   );

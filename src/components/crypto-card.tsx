@@ -22,9 +22,7 @@ export function CryptoCard({ crypto }: CryptoCardProps) {
   const priceChange = crypto.price_change_percentage_24h;
   const isPositive = priceChange > 0;
 
-  const imageSrc = crypto.image.startsWith('http')
-    ? crypto.image
-    : 'https://via.placeholder.com/40';
+  const imageSrc = crypto.image.startsWith('http') ? crypto.image : 'https://via.placeholder.com/40';
 
   return (
     <Card className="p-4 md:p-6 shadow transition-transform duration-150 hover:scale-[1.025] hover:shadow-2xl group relative bg-background/90 animate-fade-in">
@@ -42,18 +40,12 @@ export function CryptoCard({ crypto }: CryptoCardProps) {
             />
           ) : (
             <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
-              <span className="text-sm font-medium uppercase">
-                {crypto.symbol.slice(0, 2)}
-              </span>
+              <span className="text-sm font-medium uppercase">{crypto.symbol.slice(0, 2)}</span>
             </div>
           )}
           <div className="flex-1 min-w-0">
-            <h3 className="font-semibold text-base md:text-lg truncate">
-              {crypto.name}
-            </h3>
-            <span className="text-xs md:text-sm text-muted-foreground uppercase">
-              {crypto.symbol}
-            </span>
+            <h3 className="font-semibold text-base md:text-lg truncate">{crypto.name}</h3>
+            <span className="text-xs md:text-sm text-muted-foreground uppercase">{crypto.symbol}</span>
           </div>
           <PriceChange value={priceChange} />
         </div>
@@ -78,11 +70,16 @@ export function CryptoCard({ crypto }: CryptoCardProps) {
           </div>
           <div className="flex justify-between items-baseline pt-2 pb-2">
             <span className="text-xs text-muted-foreground">Máx/Mín 24h</span>
-            <span className="font-semibold text-right tabular-nums">{formatCurrency(crypto.high_24h)} / {formatCurrency(crypto.low_24h)}</span>
+            <span className="font-semibold text-right tabular-nums">
+              {formatCurrency(crypto.high_24h)} / {formatCurrency(crypto.low_24h)}
+            </span>
           </div>
           <div className="flex justify-between items-baseline pt-2">
             <span className="text-xs text-muted-foreground">ATH</span>
-            <span className="font-semibold text-right tabular-nums">{formatCurrency(crypto.ath)} ({crypto.ath_change_percentage > 0 ? '+' : ''}{crypto.ath_change_percentage?.toFixed(1)}%)</span>
+            <span className="font-semibold text-right tabular-nums">
+              {formatCurrency(crypto.ath)} ({crypto.ath_change_percentage > 0 ? '+' : ''}
+              {crypto.ath_change_percentage?.toFixed(1)}%)
+            </span>
           </div>
         </div>
 
@@ -106,12 +103,7 @@ export function CryptoCard({ crypto }: CryptoCardProps) {
               fill={`url(#colorSparkline${crypto.id})`}
               fillOpacity={0.2}
             />
-            <Area
-              type="monotone"
-              dataKey="value"
-              stroke={undefined}
-              fill={`url(#colorSparkline${crypto.id})`}
-            />
+            <Area type="monotone" dataKey="value" stroke={undefined} fill={`url(#colorSparkline${crypto.id})`} />
           </LineChart>
         </div>
       </div>
@@ -119,9 +111,29 @@ export function CryptoCard({ crypto }: CryptoCardProps) {
       <div className="absolute inset-0 bg-background/95 rounded-lg shadow-lg p-4 flex flex-col justify-center items-center opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-10">
         <div className="text-xs md:text-sm text-muted-foreground mb-2">Details</div>
         <div className="text-center space-y-1">
-          <div>Circulating supply: <span className="font-semibold">{crypto.circulating_supply?.toLocaleString()} {crypto.symbol.toUpperCase()}</span></div>
-          <div>Max supply: <span className="font-semibold">{crypto.max_supply ? crypto.max_supply.toLocaleString() : '—'} {crypto.symbol.toUpperCase()}</span></div>
-          <div>Last updated: <span className="font-semibold">{new Date(crypto.last_updated).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })} UTC</span></div>
+          <div>
+            Circulating supply:{' '}
+            <span className="font-semibold">
+              {crypto.circulating_supply?.toLocaleString()} {crypto.symbol.toUpperCase()}
+            </span>
+          </div>
+          <div>
+            Max supply:{' '}
+            <span className="font-semibold">
+              {crypto.max_supply ? crypto.max_supply.toLocaleString() : '—'} {crypto.symbol.toUpperCase()}
+            </span>
+          </div>
+          <div>
+            Last updated:{' '}
+            <span className="font-semibold">
+              {new Date(crypto.last_updated).toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false,
+              })}{' '}
+              UTC
+            </span>
+          </div>
         </div>
       </div>
     </Card>

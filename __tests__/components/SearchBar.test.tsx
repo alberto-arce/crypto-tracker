@@ -7,9 +7,7 @@ describe('SearchBar', () => {
     const onChange = vi.fn();
     render(<SearchBar value="initial" onChange={onChange} />);
 
-    expect(
-      screen.getByPlaceholderText('Search cryptocurrencies...'),
-    ).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Search cryptocurrencies...')).toBeInTheDocument();
   });
 
   it('calls onChange when input value changes', () => {

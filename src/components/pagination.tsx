@@ -11,12 +11,7 @@ interface PaginationProps {
   isLoading?: boolean;
 }
 
-export function Pagination({
-  currentPage,
-  onPageChange,
-  hasMore,
-  isLoading = false,
-}: PaginationProps) {
+export function Pagination({ currentPage, onPageChange, hasMore, isLoading = false }: PaginationProps) {
   const handleLastPage = () => {
     // Since we don't know the exact last page, we'll use a large number
     // The API will return the last available page of results
@@ -41,9 +36,7 @@ export function Pagination({
           <ChevronLeft className="h-4 w-4 mr-2" />
           Previous
         </Button>
-        <span className="text-sm text-muted-foreground">
-          Page {currentPage}
-        </span>
+        <span className="text-sm text-muted-foreground">Page {currentPage}</span>
         <Button
           variant="outline"
           size="sm"

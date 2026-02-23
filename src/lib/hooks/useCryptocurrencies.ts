@@ -5,9 +5,7 @@ import { getCryptocurrencies } from '@/lib/api';
 import { Cryptocurrency } from '@/lib/types';
 
 export function useCryptocurrencies(page: number, perPage: number) {
-  const [cryptocurrencies, setCryptocurrencies] = useState<Cryptocurrency[]>(
-    [],
-  );
+  const [cryptocurrencies, setCryptocurrencies] = useState<Cryptocurrency[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [hasMore, setHasMore] = useState(true);
@@ -20,7 +18,7 @@ export function useCryptocurrencies(page: number, perPage: number) {
         const data = await getCryptocurrencies(page, perPage);
         setCryptocurrencies(data);
         setHasMore(data.length === perPage);
-      } catch (err) {
+      } catch {
         setError('Failed to fetch cryptocurrencies. Please try again later.');
       } finally {
         setIsLoading(false);

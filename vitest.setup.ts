@@ -1,4 +1,3 @@
-import { expect } from 'vitest';
 import '@testing-library/jest-dom';
 import { beforeAll, afterAll, afterEach } from 'vitest';
 import { setupServer } from 'msw/node';

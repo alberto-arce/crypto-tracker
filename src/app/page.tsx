@@ -14,12 +14,8 @@ const ITEMS_PER_PAGE = 50;
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
-  const { cryptocurrencies, isLoading, error, hasMore } = useCryptocurrencies(
-    currentPage,
-    ITEMS_PER_PAGE,
-  );
-  const { searchQuery, setSearchQuery, filteredCryptos } =
-    useSearch(cryptocurrencies);
+  const { cryptocurrencies, isLoading, error, hasMore } = useCryptocurrencies(currentPage, ITEMS_PER_PAGE);
+  const { searchQuery, setSearchQuery, filteredCryptos } = useSearch(cryptocurrencies);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -27,12 +23,7 @@ export default function Home() {
   };
 
   if (error) {
-    return (
-      <ErrorMessage
-        message={error}
-        onRetry={() => handlePageChange(currentPage)}
-      />
-    );
+    return <ErrorMessage message={error} onRetry={() => handlePageChange(currentPage)} />;
   }
 
   return (
@@ -47,11 +38,7 @@ export default function Home() {
             <CryptoGrid cryptocurrencies={filteredCryptos} />
             {!searchQuery && (
               <div className="mt-8 flex justify-center">
-                <Pagination
-                  currentPage={currentPage}
-                  hasMore={hasMore}
-                  onPageChange={handlePageChange}
-                />
+                <Pagination currentPage={currentPage} hasMore={hasMore} onPageChange={handlePageChange} />
               </div>
             )}
           </>
